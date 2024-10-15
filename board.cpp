@@ -4,26 +4,26 @@ using namespace std;
 
 void Board::clear()
 {
-    this->moves[0][0] = '1';
-    this->moves[0][1] = '2';
-    this->moves[0][2] = '3';
-    this->moves[1][0] = '4';
-    this->moves[1][1] = '5';
-    this->moves[1][2] = '6';
-    this->moves[2][0] = '7';
-    this->moves[2][1] = '8';
-    this->moves[2][2] = '9';
+    this->moves[0] = '1';
+    this->moves[1] = '2';
+    this->moves[2] = '3';
+    this->moves[3] = '4';
+    this->moves[4] = '5';
+    this->moves[5] = '6';
+    this->moves[6] = '7';
+    this->moves[7] = '8';
+    this->moves[8] = '9';
 }
 
-void Board::move(int row, int col, char mark)
+void Board::move(int cell, char mark)
 {
-    if ((row > 0 && row < 4) && (col > 0 && col < 4))
+    if (cell > 0 && cell < 10)
     {
-        this->moves[row-1][col-1] = mark;
+        this->moves[cell-1] = mark;
     }
 }
 
-char Board::get_mark(int row, int col)
+char Board::get_mark(int cell)
 {
-    return this->moves[row-1][col-1];
+    return this->moves[cell-1];
 }
