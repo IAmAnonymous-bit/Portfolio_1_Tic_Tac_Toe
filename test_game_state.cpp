@@ -1,12 +1,12 @@
+using namespace std;
+
 #include <iostream>
 #include <cassert>
 #include "game_state.cpp"
 
-using namespace std;
-
 int main()
 {
+    cout << "All Code Works Well!" << endl;
     
-
     return 0;
 }
