@@ -2,7 +2,7 @@ using namespace std;
 
 #include <iostream>
 #include <cassert>
-#include "board.hpp"
+#include "board.cpp"
 
 int main()
 {
