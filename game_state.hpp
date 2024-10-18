@@ -1,16 +1,14 @@
 #pragma once
 
-using namespace std;
-
 #include <string>
 #include "board.hpp"
 
-class Game_State
+class GameState
 {
     private:
-    Board *board;
+        Board *b;
     
     public:
-    Game_State(Board *board);
-    string current_state();
+        GameState(Board *b);
+        string current_state();
 };

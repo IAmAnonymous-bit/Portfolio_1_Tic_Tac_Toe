@@ -7,78 +7,90 @@ using namespace std;
 
 int main()
 {
-    Board board;
+    Board b;
 
-    Game_State game_state(&board);
+    GameState gs(&b);
 
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "Game In Progress...");
     
-    board.move(1, 'X');
-    board.move(2, 'X');
-    board.move(3, 'X');
+    b.move(1, 'X');
+    b.move(2, 'X');
+    b.move(3, 'X');
 
-    assert(game_state.current_state() == "The Winner Is: Player X");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player X");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(4, 'O');
-    board.move(5, 'O');
-    board.move(6, 'O');
+    b.move(4, 'O');
+    b.move(5, 'O');
+    b.move(6, 'O');
 
-    assert(game_state.current_state() == "The Winner Is: Player O");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player O");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(7, 'X');
-    board.move(8, 'X');
-    board.move(9, 'X');
+    b.move(7, 'X');
+    b.move(8, 'X');
+    b.move(9, 'X');
 
-    assert(game_state.current_state() == "The Winner Is: Player X");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player X");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(1, 'O');
-    board.move(4, 'O');
-    board.move(7, 'O');
+    b.move(1, 'O');
+    b.move(4, 'O');
+    b.move(7, 'O');
 
-    assert(game_state.current_state() == "The Winner Is: Player O");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player O");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(2, 'X');
-    board.move(5, 'X');
-    board.move(8, 'X');
+    b.move(2, 'X');
+    b.move(5, 'X');
+    b.move(8, 'X');
 
-    assert(game_state.current_state() == "The Winner Is: Player X");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player X");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(3, 'O');
-    board.move(6, 'O');
-    board.move(9, 'O');
+    b.move(3, 'O');
+    b.move(6, 'O');
+    b.move(9, 'O');
 
-    assert(game_state.current_state() == "The Winner Is: Player O");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player O");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(1, 'X');
-    board.move(5, 'X');
-    board.move(9, 'X');
+    b.move(1, 'X');
+    b.move(5, 'X');
+    b.move(9, 'X');
 
-    assert(game_state.current_state() == "The Winner Is: Player X");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player X");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
 
-    board.move(3, 'O');
-    board.move(5, 'O');
-    board.move(7, 'O');
+    b.move(3, 'O');
+    b.move(5, 'O');
+    b.move(7, 'O');
 
-    assert(game_state.current_state() == "The Winner Is: Player O");
-    board.clear();
-    assert(game_state.current_state() == "Game In Progress...");
+    assert(gs.current_state() == "The Winner Is: Player O");
+    b.clear();
+    assert(gs.current_state() == "Game In Progress...");
+
+    b.move(1, 'O');
+    b.move(2, 'X');
+    b.move(3, 'O');
+    b.move(4, 'O');
+    b.move(5, 'X');
+    b.move(6, 'X');
+    b.move(7, 'X');
+    b.move(8, 'O');
+    b.move(9, 'X');
+
+    assert(gs.current_state() == "The Game Is a Tie!");
 
 
-    cout << "All Code Works Well!" << endl;
+    cout << "All Code Works" << endl;
     
     return 0;
 }
