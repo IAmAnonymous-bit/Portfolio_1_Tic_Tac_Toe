@@ -1,12 +1,12 @@
 using namespace std;
 
 #include <iostream>
-#include "board.cpp"
-#include "game_state.cpp"
-#include "console.cpp"
-#include "validator.cpp"
-#include "player.cpp"
-#include "game.cpp"
+#include "board.hpp"
+#include "game_state.hpp"
+#include "console.hpp"
+#include "validator.hpp"
+#include "player.hpp"
+#include "game.hpp"
 
 int main()
 {

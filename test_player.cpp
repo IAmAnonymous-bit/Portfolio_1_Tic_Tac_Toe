@@ -2,9 +2,9 @@ using namespace std;
 
 #include <iostream>
 #include <string>
-#include "player.cpp"
-#include "board.cpp"
-#include "validator.cpp"
+#include "player.hpp"
+#include "board.hpp"
+#include "validator.hpp"
 
 int main()
 {
@@ -15,6 +15,7 @@ int main()
 
     cout << p.get_mark() << endl;
 
+    p.get_move();
     p.get_move();
 
     return 0;

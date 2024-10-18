@@ -2,8 +2,8 @@ using namespace std;
 
 #include <iostream>
 #include <cassert>
-#include "game_state.cpp"
-#include "board.cpp"
+#include "game_state.hpp"
+#include "board.hpp"
 
 int main()
 {

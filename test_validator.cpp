@@ -2,8 +2,8 @@ using namespace std;
 
 #include <iostream>
 #include <cassert>
-#include "board.cpp"
-#include "validator.cpp"
+#include "board.hpp"
+#include "validator.hpp"
 
 int main()
 {
