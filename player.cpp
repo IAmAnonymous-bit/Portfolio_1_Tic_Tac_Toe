@@ -23,8 +23,9 @@ void Player::get_move()
     {
         cout << prompt << endl;
         getline(cin, input);
-        if (v->is_int(input))
-        {
+        if (input.length() < 1) {
+            cout << "You can't make that move" << endl;
+        } else if (v->is_int(input)) {
             move = stoi(input);
             if(v->is_valid(move))
             {
