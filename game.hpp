@@ -7,6 +7,7 @@
 class Game
 {
     private:
+        Board *b;
         GameState *gs;
         Console *c;
         Player *p1;
@@ -14,7 +15,7 @@ class Game
         Player *curP;
 
     public:
-        Game(GameState *gs, Console *c, Player *p1, Player *p2);
+        Game(Board *b, GameState *gs, Console *c, Player *p1, Player *p2);
         void start();
     
 };

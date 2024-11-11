@@ -16,7 +16,7 @@ int main()
     Validator v(&b);
     Player p1(&b, &v, 'X');
     Player p2(&b, &v, 'O');
-    Game game(&gs, &c, &p1, &p2);
+    Game game(&b, &gs, &c, &p1, &p2);
 
     game.start();
 
