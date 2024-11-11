@@ -23,11 +23,16 @@ bool Validator::is_int(string input)
 bool Validator::is_valid(int move)
 {
     
-    if (move > 9 && move < 1)
+    if (move <= 9 && move >= 1)
     {
-        return false;
+        if(b->get_mark(move) == 'X' || b->get_mark(move) == 'O')
+        {
+            return false;
+        } else {
+            return true;
+        }
     } else {
-        return true;
+        return false;
     } 
     
 }
