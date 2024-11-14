@@ -11,5 +11,6 @@ class Validator
         Validator(Board *b);
         bool is_int(string input);
         bool is_valid(int move);
+        bool has_special(string arch);
 
 };

@@ -8,14 +8,15 @@ class Game
 {
     private:
         Board *b;
-        GameState *gs;
-        Console *c;
         Player *p1;
         Player *p2;
         Player *curP;
+        GameState *gs;
+        Console *c;
+        bool battle = false;
 
     public:
-        Game(Board *b, GameState *gs, Console *c, Player *p1, Player *p2);
+        Game(Board *b, Player *p1, Player *p2, GameState *gs, Console *c);
         void start();
     
 };

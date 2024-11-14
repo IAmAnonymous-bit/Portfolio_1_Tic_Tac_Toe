@@ -5,14 +5,14 @@ using namespace std;
 #include <algorithm>
 #include "game.hpp"
 
-Game::Game(Board *b, GameState *gs, Console *c, Player *p1, Player *p2)
+Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, Console *c)
 {
     this->b = b;
-    this->gs = gs;
-    this->c = c;
     this->p1 = p1;
     this->p2 = p2;
     this->curP = p1;
+    this->gs = gs;
+    this->c = c;
 }
 
 void Game::start()
@@ -23,26 +23,30 @@ void Game::start()
 
     while (cont_play)
     {
-        while(gs->current_state() == "Game In Progress...")
+        if(!battle)
         {
-            cout << c->display() << endl;
-            curP->get_move();
-            if (curP->get_mark() == p1->get_mark())
+            while(gs->current_state() == "Game In Progress...")
             {
-                curP = p2;
-            } else {
-                curP = p1;
-            }
-            cout << endl;
+                cout << c->display() << endl;
+                curP->get_move();
+                if (curP->get_mark() == p1->get_mark())
+                {
+                    curP = p2;
+                } else {
+                    curP = p1;
+                }
+                cout << endl;
         
+            }
+            cout << c->display() << endl;
+            cout << gs->current_state() << endl;
         }
-        cout << c->display() << endl;
-        cout << gs->current_state() << endl;
 
         string again;
         bool confirm;
         while(!confirm)
         {
+            string again;
             cout << "Play Again? : (Yes/No)" << endl;
             getline(cin, again);
             cout << endl;
@@ -65,6 +69,7 @@ void Game::start()
             b->clear();
             curP = p1;
             confirm = false;
+            battle = false;
         } else {
             cont_play = false;
         }

@@ -11,12 +11,12 @@ using namespace std;
 int main()
 {
     Board b;
-    GameState gs(&b);
-    Console c(&b);
     Validator v(&b);
     Player p1(&b, &v, 'X');
     Player p2(&b, &v, 'O');
-    Game game(&b, &gs, &c, &p1, &p2);
+    GameState gs(&b, &p1, &p2);
+    Console c(&b);
+    Game game(&b, &p1, &p2, &gs, &c);
 
     game.start();
 

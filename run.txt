@@ -1,0 +1,1 @@
+g++ main_test_game.cpp board.cpp console.cpp game_state.cpp game.cpp player.cpp validator.cpp
