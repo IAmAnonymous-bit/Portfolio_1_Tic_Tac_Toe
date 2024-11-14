@@ -54,11 +54,11 @@ bool Player::set_archetype(char entry)
     if(entry == 's')
     {
         archetype = "Swarm ";
-        cout << "Player " << mark << " Has Chose Swarm!" << endl;
+        cout << "Player " << mark << " Chose The Swarm!" << endl;
         return true;
     } else if (entry == 'p') {
         archetype = "Pyromancer ";
-        cout << "Player " << mark << " Has Chose Pyromancer!" << endl;
+        cout << "Player " << mark << " Chose The Pyromancer!" << endl;
         return true;
     } else {
         cout << "Archetype Does Not Exist" << endl;
