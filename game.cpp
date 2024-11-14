@@ -51,6 +51,14 @@ void Game::start()
         //For battle mode
         bool choice1;
         bool choice2;
+        string spec_inst = "Activate this ability by entering \"Go\"";
+        string swarm1 = "The Swarm:";
+        string swarm2 = "   This hive mind doesn't only win with a Three in a Row";
+        string swarm3 = "   It can also win if it fills all four corners of the board";
+        string swarm4 = "   (Enter \"S\" to Play Swarm)";
+        string pyro1 = "The Pyromancer:";
+        string pyro2 = "    This powerful magic user has the ability to clear the entire board";
+        string pyro3 = "    (Enter \"P\" to Play Pyromancer)";
 
         if(mode == "regular")
         {
@@ -70,6 +78,9 @@ void Game::start()
             cout << c->display() << endl;
             cout << gs->current_state() << endl << endl;
         } else {
+            cout << "Welcom to Battle Mode!" << endl;
+            cout << swarm1 << endl << swarm2 << endl << swarm3 << endl << swarm4 << endl;
+            cout << pyro1 << endl << pyro2 << endl << spec_inst << endl << pyro3 << endl << endl;
 
             cout << "First Player! Pick Your Archetype!" << endl;
             while (!choice1)

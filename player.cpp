@@ -117,9 +117,15 @@ void Player::get_battle_move()
         } else if (lower == "go") {
             if (v->has_special(archetype))
             {
-                battle_val = true;
+                if (used_special)
+                {
+                    cout << endl << "You Already Used Your Special Move!" << endl << endl;
+                } else {
+                    battle_val = true;
+                    used_special = true;
+                }
             } else {
-                cout << "Your Archetype Can't Use Special Moves!" << endl << endl;
+                cout << endl << "Your Archetype Can't Use Special Moves!" << endl << endl;
             }
         } else if (v->is_int(input)) {
             move = stoi(input);
