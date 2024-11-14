@@ -54,14 +54,14 @@ bool Player::set_archetype(char entry)
     if(entry == 's')
     {
         archetype = "Swarm ";
-        cout << "Player " << mark << " Has Chose Swarm!" << endl << endl;
+        cout << "Player " << mark << " Has Chose Swarm!" << endl;
         return true;
     } else if (entry == 'p') {
         archetype = "Pyromancer ";
-        cout << "Player " << mark << " Has Chose Pyromancer!" << endl << endl;
+        cout << "Player " << mark << " Has Chose Pyromancer!" << endl;
         return true;
     } else {
-        cout << "Archetype Does Not Exist" << endl << endl;
+        cout << "Archetype Does Not Exist" << endl;
         return false;
     }
 
@@ -119,7 +119,7 @@ void Player::get_battle_move()
             {
                 battle_val = true;
             } else {
-                cout << "Your Archetype Can't Use Special Moves!" << endl;
+                cout << "Your Archetype Can't Use Special Moves!" << endl << endl;
             }
         } else if (v->is_int(input)) {
             move = stoi(input);
@@ -140,7 +140,7 @@ void Player::get_battle_move()
     } else {
         if (archetype == "Pyromancer ")
         {
-            cout << endl << "KABOOM!!!" << endl << endl;
+            cout << endl << "KABOOM!!!" << endl;
             b->clear();
         }
     }

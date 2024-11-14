@@ -5,13 +5,14 @@ using namespace std;
 #include <algorithm>
 #include "game.hpp"
 
-Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, Console *c)
+Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Console *c)
 {
     this->b = b;
     this->p1 = p1;
     this->p2 = p2;
     this->curP = p1;
     this->gs = gs;
+    this->bs = bs;
     this->c = c;
 }
 
@@ -23,7 +24,35 @@ void Game::start()
 
     while (cont_play)
     {
-        if(!battle)
+        string mode;;
+        bool confirm1;
+
+        cout << "Would you like to play \"Regular\" or \"Battle\" mode?" << endl;
+        while (!confirm1)
+        {
+            
+            getline(cin, mode);
+            cout << endl;
+            string mode1;
+            for (int i = 0; i < mode.length(); i++)
+            {
+                mode1 += tolower(mode[i]);
+            }
+            if (mode1 == "battle" || mode1 == "regular")
+            {
+                mode = mode1;
+                confirm1 = true;
+            } else  {
+                cout << "Please enter \"Regular\" or \"Battle\" to select a mode" << endl;
+            }
+            
+        }
+
+        //For battle mode
+        bool choice1;
+        bool choice2;
+
+        if(mode == "regular")
         {
             while(gs->current_state() == "Game In Progress...")
             {
@@ -39,14 +68,59 @@ void Game::start()
         
             }
             cout << c->display() << endl;
-            cout << gs->current_state() << endl;
+            cout << gs->current_state() << endl << endl;
+        } else {
+
+            cout << "First Player! Pick Your Archetype!" << endl;
+            while (!choice1)
+            {
+                string c;
+                getline(cin, c);
+                cout << endl;
+                if (c.length() > 1)
+                {
+                    cout << "Warning: Please Enter a Single Character (Examples: \"A\" or \"b\")" << endl;
+                } else {
+                    choice1 = p1->set_archetype(c[0]);
+                }
+            }
+            cout << endl;
+
+            cout << "Second Player! Pick Your Archetype!" << endl;
+            while (!choice2)
+            {
+                string c;
+                getline(cin, c);
+                cout << endl;
+                if (c.length() > 1)
+                {
+                    cout << "Warning: Please Enter a Single Character (Examples: \"A\" or \"b\")" << endl;
+                } else {
+                    choice2 = p2->set_archetype(c[0]);
+                }
+            }
+            cout << endl;
+
+            while (bs->cur_bat_state() == "Game In Progress...")
+            {
+                cout << c->display() << endl;
+                curP->get_battle_move();
+                if (curP->get_mark() == p1->get_mark())
+                {
+                    curP = p2;
+                } else {
+                    curP = p1;
+                }
+                cout << endl;
+            }
+            cout << c->display() << endl;
+            cout << bs->cur_bat_state() << endl << endl;
         }
 
         string again;
-        bool confirm;
-        while(!confirm)
+        bool confirm2;
+        while(!confirm2)
         {
-            string again;
             cout << "Play Again? : (Yes/No)" << endl;
             getline(cin, again);
             cout << endl;
@@ -59,7 +133,7 @@ void Game::start()
             {
                 cout << "Invalid Response!" << endl;
             } else {
-                confirm = true;
+                confirm2 = true;
                 again = again1;
             }
         }
@@ -67,9 +141,14 @@ void Game::start()
         if (again == "yes")
         {
             b->clear();
+            p1->reset();
+            p2->reset();
             curP = p1;
-            confirm = false;
-            battle = false;
+            confirm1 = false;
+            confirm2 = false;
+            choice1 = false;
+            choice2 = false;
+            mode = "";
         } else {
             cont_play = false;
         }
