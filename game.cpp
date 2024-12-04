@@ -5,7 +5,7 @@ using namespace std;
 #include <algorithm>
 #include "game.hpp"
 
-Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Console *c)
+Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Console *c, Results *r)
 {
     this->b = b;
     this->p1 = p1;
@@ -14,6 +14,7 @@ Game::Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Con
     this->gs = gs;
     this->bs = bs;
     this->c = c;
+    this->r = r;
 }
 
 void Game::start()
@@ -26,6 +27,7 @@ void Game::start()
     {
         string mode;;
         bool confirm1;
+        r->add_game_played();
 
         cout << "Would you like to play \"Regular\" or \"Battle\" mode?" << endl;
         while (!confirm1)
@@ -77,7 +79,14 @@ void Game::start()
             }
             cout << c->display() << endl;
             cout << gs->current_state() << endl << endl;
+            if (gs->current_state() == "The Game Is a Tie!")
+            {
+                r->add_tie();
+            } else {
+                r->add_win(curP->get_mark());
+            }
         } else {
+            r->add_battle_played();
             cout << "Welcom to Battle Mode!" << endl;
             cout << swarm1 << endl << swarm2 << endl << swarm3 << endl << swarm4 << endl;
             cout << pyro1 << endl << pyro2 << endl << spec_inst << endl << pyro3 << endl << endl;
@@ -126,6 +135,12 @@ void Game::start()
             }
             cout << c->display() << endl;
             cout << bs->cur_bat_state() << endl << endl;
+            if (bs->cur_bat_state() == "The Game Is a Tie!")
+            {
+                r->add_tie();
+            } else {
+                r->add_win(curP->get_mark());
+            }
         }
 
         string again;
@@ -166,5 +181,7 @@ void Game::start()
     
     }
 
+    r->print_results();
+    cout << endl;
     cout << "Thanks For Playing!" << endl;
 }

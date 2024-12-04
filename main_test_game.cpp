@@ -7,6 +7,7 @@ using namespace std;
 #include "console.hpp"
 #include "validator.hpp"
 #include "player.hpp"
+#include "results.hpp"
 #include "game.hpp"
 
 int main()
@@ -18,7 +19,9 @@ int main()
     GameState gs(&b, &p1, &p2);
     BattleState bs(&b, &p1, &p2, &gs);
     Console c(&b);
-    Game game(&b, &p1, &p2, &gs, &bs, &c);
+    Results r(&p1, &p2);
+
+    Game game(&b, &p1, &p2, &gs, &bs, &c, &r);
 
     game.start();
 

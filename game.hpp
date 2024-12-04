@@ -5,6 +5,7 @@
 #include "console.hpp"
 #include "player.hpp"
 #include "battle_state.hpp"
+#include "results.hpp"
 
 class Game
 {
@@ -16,9 +17,10 @@ class Game
         GameState *gs;
         BattleState *bs;
         Console *c;
+        Results *r;
 
     public:
-        Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Console *c);
+        Game(Board *b, Player *p1, Player *p2, GameState *gs, BattleState *bs, Console *c, Results *r);
         void start();
     
 };
